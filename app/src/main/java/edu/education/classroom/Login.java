@@ -34,7 +34,7 @@ public class Login extends AppCompatActivity {
     private CircleImageView imageView;
     private Dialog dialog;
 
-    private String JSON_URL = "http://192.168.42.42/Classroom/php%20Codes/login.php";
+    private String JSON_URL = "http://192.168.43.89/Classroom/php%20Codes/login.php";
     private String actualPassword;
     private String uUsername;
     private String uPassword;
@@ -128,6 +128,7 @@ public class Login extends AppCompatActivity {
                                                 password.setVisibility(View.VISIBLE);
                                                 LoginButton.setText("Login");
                                                 RegisterButton.setText("Go Back");
+                                                RegisterButton.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.back_icon,0,0,0);
                                                 userEmail = object.getString("email");
                                                 flag = true;
                                             }

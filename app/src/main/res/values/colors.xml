@@ -10,5 +10,10 @@
     <color name="darkyellow">#FF9800</color>
     <color name="textcolor">#686868</color>
 
+    <color name="color1">#2196F3</color>
+    <color name="color2">#4CAF50</color>
+    <color name="color3">#CDDC39</color>
+    <color name="color4">#FF9800</color>
+
     <color name="transparent">#43FFFFFF</color>
 </resources>
