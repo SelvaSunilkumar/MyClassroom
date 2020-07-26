@@ -97,7 +97,15 @@ public class Home extends AppCompatActivity implements InflateClassLister.OnItem
     @Override
     public void onItemClick(int position) {
         ClassDetails classDetails = details.get(position);
-        Toast.makeText(getApplicationContext(),classDetails.getClassName(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),classDetails.getClassName(),Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Home.this,InClass.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("code",classDetails.getClassId());
+        bundle.putString("name",classDetails.getClassName());
+        bundle.putString("section",classDetails.getClassSection());
+        bundle.putString("email",userId);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     class ClassCount extends AsyncTask<Void,Void,Void>{
