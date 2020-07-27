@@ -7,11 +7,8 @@
     tools:context=".InClass">
 
     <ScrollView
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -74,15 +71,11 @@
                         android:text="Share with your Class"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <RelativeLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/recyclerView"/>
-            </RelativeLayout>
+                android:layout_height="match_parent"
+                android:id="@+id/recyclerView"/>
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 </LinearLayout>
