@@ -10,9 +10,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextPaint;
+import android.util.Base64;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -75,12 +78,39 @@ public class Home extends AppCompatActivity implements InflateClassLister.OnItem
         addClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                PopupMenu popupMenu = new PopupMenu(Home.this,v);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.joinClass:
+                                Intent joinIntent = new Intent(Home.this,JoinClass.class);
+                                Bundle joinBundle = new Bundle();
+                                bundle.putString("userId",userId);
+                                joinIntent.putExtras(bundle);
+                                startActivity(joinIntent);
+                                return true;
+                            case R.id.newClass:
+                                Intent intent = new Intent(Home.this,CreateClass.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("userId",userId);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                popupMenu.inflate(R.menu.home_menu);
+                popupMenu.show();
                 //Toast.makeText(getApplicationContext(),"Add Class",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Home.this,CreateClass.class);
+                /*Intent intent = new Intent(Home.this,CreateClass.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("userId",userId);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
 
@@ -147,6 +177,7 @@ public class Home extends AppCompatActivity implements InflateClassLister.OnItem
                     params.put("userId",userId);
                     return params;
                 }
+
             };
 
             queue.add(stringRequest);
@@ -203,6 +234,7 @@ public class Home extends AppCompatActivity implements InflateClassLister.OnItem
                     params.put("userId",userId);
                     return params;
                 }
+
             };
 
             queue.add(request);

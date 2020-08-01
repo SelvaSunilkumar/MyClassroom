@@ -168,6 +168,7 @@ public class Register extends AppCompatActivity {
                 params.put("image",encodeImage(bitmap));
                 return params;
             }
+            
         };
 
         queue.add(request);

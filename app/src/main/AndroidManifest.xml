@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NewAnnouncement"></activity>
+        <activity android:name=".JoinClass"></activity>
+        <activity android:name=".NewAnnouncement" />
         <activity android:name=".InClass" />
         <activity android:name=".CreateClass" />
         <activity android:name=".Home" />

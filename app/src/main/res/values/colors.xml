@@ -15,5 +15,9 @@
     <color name="color3">#CDDC39</color>
     <color name="color4">#FF9800</color>
 
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="button">#CDCDCD</color>
+
     <color name="transparent">#43FFFFFF</color>
 </resources>
