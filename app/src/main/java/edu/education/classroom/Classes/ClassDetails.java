@@ -12,13 +12,15 @@ public class ClassDetails {
     private String classRoom;
     private String classSection;
     private String classDesription;
+    private int backgroundNumber;
 
-    public ClassDetails(String classId,String className, String classRoom, String classSection, String classDesription) {
+    public ClassDetails(String classId,String className, String classRoom, String classSection, String classDesription,int backgroundNumber) {
         this.classId = classId;
         this.className = className;
         this.classRoom = classRoom;
         this.classSection = classSection;
         this.classDesription = classDesription;
+        this.backgroundNumber = backgroundNumber;
     }
 
     public String getClassId() {
@@ -61,4 +63,11 @@ public class ClassDetails {
         this.classDesription = classDesription;
     }
 
+    public int getBackgroundNumber() {
+        return backgroundNumber;
+    }
+
+    public void setBackgroundNumber(int backgroundNumber) {
+        this.backgroundNumber = backgroundNumber;
+    }
 }

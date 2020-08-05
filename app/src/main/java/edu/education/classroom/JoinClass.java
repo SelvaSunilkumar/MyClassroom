@@ -31,6 +31,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class JoinClass extends AppCompatActivity {
 
@@ -58,6 +59,7 @@ public class JoinClass extends AppCompatActivity {
     private String CLASSCREATED;
     private String CLASSSUBJECT;
     private String date;
+    private int backgroundNumber;
 
     private RequestQueue joinQueue;
     private StringRequest joinRequest;
@@ -147,6 +149,7 @@ public class JoinClass extends AppCompatActivity {
                                     CLASSROOM = classDetails.getString("room");
                                     CLASSSUBJECT = classDetails.getString("subject");
                                     CLASSCREATED = classDetails.getString("created");
+                                    backgroundNumber = Integer.parseInt(classDetails.getString("bgNo"));
                                     Toast.makeText(getApplicationContext(),CLASSCODE + " " + CLASSNAME + " " + CLASSSECTION + " " + CLASSROOM + " " + CLASSSUBJECT + " " + CLASSCREATED,Toast.LENGTH_SHORT).show();
                                     new EnterClass().execute(CLASSCODE,CLASSNAME,CLASSSECTION,CLASSROOM,CLASSSUBJECT,CLASSCREATED,userId);
                                 }
@@ -229,6 +232,7 @@ public class JoinClass extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String,String> params = new HashMap<>();
+
                     params.put("classId",CLASSCODE);
                     params.put("className",CLASSNAME);
                     params.put("classSection",CLASSSECTION);
@@ -237,6 +241,7 @@ public class JoinClass extends AppCompatActivity {
                     params.put("classCreated",CLASSCREATED);
                     params.put("classStudents",userId);
                     params.put("classDate",date);
+                    params.put("bgNo",String.valueOf(backgroundNumber));
                     return params;
                 }
             };

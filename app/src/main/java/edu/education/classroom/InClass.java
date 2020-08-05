@@ -1,11 +1,13 @@
 package edu.education.classroom;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
@@ -40,6 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.education.classroom.Classes.AnnouncementDetails;
+import edu.education.classroom.Classes.ClassDetails;
 import edu.education.classroom.adapter.InflateAnnouncementLister;
 
 public class InClass extends AppCompatActivity {
@@ -52,6 +55,7 @@ public class InClass extends AppCompatActivity {
     private TextView className;
     private TextView classSection;
     private ImageView userImage;
+    private LinearLayout linearLayout;
     private LinearLayout shareContent;
     private RecyclerView recyclerView;
 
@@ -60,6 +64,7 @@ public class InClass extends AppCompatActivity {
     private String ClassId;
     private String userId;
     private String userProfileImage;
+    private int backgroundNumber;
 
     private RequestQueue queue;
     private JsonObjectRequest userRequest;
@@ -80,7 +85,7 @@ public class InClass extends AppCompatActivity {
     private String announcementDate;
     private String announcementPhotoUrl;
     private String posterName;
-
+    int backColor[] = {R.drawable.classbackground1,R.drawable.classbackground2,R.drawable.classbackground3,R.drawable.classbackground4,R.drawable.classbackground5};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,15 +98,18 @@ public class InClass extends AppCompatActivity {
         ClassSection = bundle.getString("section");
         ClassId = bundle.getString("code");
         userId = bundle.getString("email");
+        backgroundNumber = bundle.getInt("backgroundNumber");
 
         recyclerView = findViewById(R.id.recyclerView);
         className = findViewById(R.id.className);
         classSection = findViewById(R.id.classSection);
         userImage = findViewById(R.id.userImage);
         shareContent = findViewById(R.id.announcements);
+        linearLayout = findViewById(R.id.linearLayout);
 
         classSection.setText(ClassSection);
         className.setText(ClassName);
+        linearLayout.setBackground(getApplicationContext().getDrawable(backColor[backgroundNumber]));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -174,6 +182,7 @@ public class InClass extends AppCompatActivity {
             announcementRequestQueue = Volley.newRequestQueue(InClass.this);
             announcementRequest = new StringRequest(Request.Method.POST, ANNOUNCEMENT_JSON_URL,
                     new Response.Listener<String>() {
+                        @RequiresApi(api = Build.VERSION_CODES.N)
                         @Override
                         public void onResponse(String response) {
 
@@ -194,6 +203,8 @@ public class InClass extends AppCompatActivity {
                                     details.add(new AnnouncementDetails(announcementId,classId,announcementUserId,announcementMessage,announcementDate,announcementPhotoUrl,posterName));
                                 }
                                 //Collections.sort(details);
+                                //Collections.reverse(details);
+                                details.sort(new DataSorter());
                                 adapter = new InflateAnnouncementLister(InClass.this,details);
                                 recyclerView.setAdapter(adapter);
 
@@ -217,6 +228,15 @@ public class InClass extends AppCompatActivity {
             };
             announcementRequestQueue.add(announcementRequest);
             return null;
+        }
+    }
+
+    class DataSorter implements Comparator<AnnouncementDetails> {
+
+        @Override
+        public int compare(AnnouncementDetails o1, AnnouncementDetails o2) {
+            //return o1.getDate().compareTo(o2.getDate());
+            return o2.getDate().compareTo(o1.getDate());
         }
     }
 }

@@ -19,5 +19,12 @@
     <color name="black">#000</color>
     <color name="button">#CDCDCD</color>
 
+    <color name="blueBackground">#446be9</color>
+    <color name="cream">#dd7822</color>
+    <color name="greyBlue">#295385</color>
+    <color name="ash">#5c5c5c</color>
+    <color name="darkGreen">#1b562a</color>
+
     <color name="transparent">#43FFFFFF</color>
 </resources>
+

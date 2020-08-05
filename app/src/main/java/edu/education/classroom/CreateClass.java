@@ -29,6 +29,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 public class CreateClass extends AppCompatActivity {
@@ -129,6 +130,9 @@ public class CreateClass extends AppCompatActivity {
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
                             classDate = dateFormat.format(date);
 
+                            Random random = new Random();
+                            int backgroundNumber = random.nextInt(4);
+
                             params.put("classId", classId);
                             params.put("className", Name);
                             params.put("classRoom", Room);
@@ -137,6 +141,7 @@ public class CreateClass extends AppCompatActivity {
                             params.put("classCreated", userId);
                             params.put("classStudents", userId);
                             params.put("classDate", classDate);
+                            params.put("bgNo", String.valueOf(backgroundNumber));
                             return params;
                         }
                     };

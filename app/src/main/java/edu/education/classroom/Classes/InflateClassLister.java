@@ -1,6 +1,7 @@
 package edu.education.classroom.Classes;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,10 +52,13 @@ public class InflateClassLister extends RecyclerView.Adapter<InflateClassLister.
         String className = classDetails.getClassName();
         String classSection = classDetails.getClassSection();
         String classDescription = classDetails.getClassDesription();
+        int classBackground = classDetails.getBackgroundNumber();
 
         holder.ClassName.setText(className);
         holder.ClassSection.setText(classSection);
         holder.ClassDescription.setText(classDescription);
+        int backColor[] = {R.drawable.classbackground1,R.drawable.classbackground2,R.drawable.classbackground3,R.drawable.classbackground4,R.drawable.classbackground5};
+        holder.linearLayout.setBackground(context.getDrawable(backColor[classBackground]));
     }
 
 

@@ -19,6 +19,7 @@
                 app:cardCornerRadius="10dp"
                 app:cardUseCompatPadding="true">
                 <LinearLayout
+                    android:id="@+id/linearLayout"
                     android:background="@drawable/back"
                     android:padding="15dp"
                     android:layout_width="match_parent"
