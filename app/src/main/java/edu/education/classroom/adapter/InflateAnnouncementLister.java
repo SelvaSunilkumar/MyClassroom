@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,13 +20,21 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.education.classroom.Classes.AnnouncementDetails;
-import edu.education.classroom.Classes.InflateClassLister;
 import edu.education.classroom.R;
 
 public class InflateAnnouncementLister extends RecyclerView.Adapter<InflateAnnouncementLister.AnnouncementViewHolder> {
 
     private Context context;
     private ArrayList<AnnouncementDetails> details;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public InflateAnnouncementLister(Context context,ArrayList<AnnouncementDetails> details) {
         this.context = context;
@@ -84,6 +91,18 @@ public class InflateAnnouncementLister extends RecyclerView.Adapter<InflateAnnou
             userName = viewItem.findViewById(R.id.userName);
             date = viewItem.findViewById(R.id.dateOfUpload);
             announcementMessage = viewItem.findViewById(R.id.announcementMessage);
+
+            viewItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

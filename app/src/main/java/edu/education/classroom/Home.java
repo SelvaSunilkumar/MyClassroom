@@ -1,30 +1,22 @@
 package edu.education.classroom;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.content.ClipData;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.TextPaint;
-import android.util.Base64;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -35,10 +27,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import edu.education.classroom.Classes.ClassDetails;
-import edu.education.classroom.Classes.InflateClassLister;
+import edu.education.classroom.adapter.InflateClassLister;
 
 public class Home extends AppCompatActivity implements InflateClassLister.OnItemClickListener {
 
@@ -131,9 +122,6 @@ public class Home extends AppCompatActivity implements InflateClassLister.OnItem
             @Override
             public void onRefresh() {
                 ClassCount();
-                /*Random random = new Random();
-                int number = random.nextInt(4);
-                Toast.makeText(getApplicationContext(),"Random No : " + number,Toast.LENGTH_SHORT).show();*/
             }
         });
     }

@@ -45,7 +45,7 @@ import edu.education.classroom.Classes.AnnouncementDetails;
 import edu.education.classroom.Classes.ClassDetails;
 import edu.education.classroom.adapter.InflateAnnouncementLister;
 
-public class InClass extends AppCompatActivity {
+public class InClass extends AppCompatActivity implements InflateAnnouncementLister.OnItemClickListener {
 
     private String USER_JSON_URL = "http://192.168.43.89/Classroom/php%20Codes/login.php";
     private String ANNOUNCEMENT_JSON_URL = "http://192.168.43.89/Classroom/php%20Codes/get_announcement.php";
@@ -132,6 +132,20 @@ public class InClass extends AppCompatActivity {
         new FetchData().execute();
     }
 
+    @Override
+    public void onItemClick(int position) {
+        AnnouncementDetails announcementDetails = details.get(position);
+        Intent intent = new Intent(InClass.this,ViewAnnouncement.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("name",announcementDetails.getName());
+        bundle.putString("date",announcementDetails.getDate());
+        bundle.putString("profileurl",announcementDetails.getProfilePic());
+        bundle.putString("message",announcementDetails.getMessage());
+        bundle.putString("announcementId",announcementDetails.getAnnouncementId());
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
 
     class LoadImage extends AsyncTask<Void,Void,Void> {
 
@@ -207,6 +221,8 @@ public class InClass extends AppCompatActivity {
                                 details.sort(new DataSorter());
                                 adapter = new InflateAnnouncementLister(InClass.this,details);
                                 recyclerView.setAdapter(adapter);
+
+                                adapter.setOnItemClickListener(InClass.this);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

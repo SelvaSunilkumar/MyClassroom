@@ -1,8 +1,6 @@
-package edu.education.classroom.Classes;
+package edu.education.classroom.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import edu.education.classroom.Classes.ClassDetails;
 import edu.education.classroom.R;
 
 public class InflateClassLister extends RecyclerView.Adapter<InflateClassLister.ClassViewHolder> {
