@@ -1,176 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1"
+    android:fillViewport="true"
     tools:context=".ViewAnnouncement">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <LinearLayout
-                android:layout_weight="1"
-                android:weightSum="1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    android:gravity="center_vertical">
-                    <LinearLayout
-                        android:id="@+id/back"
-                        android:padding="5dp"
-                        android:layout_width="?actionBarSize"
-                        android:layout_height="?actionBarSize"
-                        android:gravity="center"
-                        android:clickable="true"
-                        android:background="?android:selectableItemBackground">
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_gravity="center"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@drawable/go_back_icon"/>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
+                    android:layout_weight="1"
+                    android:weightSum="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:minHeight="150dp"
-                    android:orientation="vertical"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp">
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="?actionBarSize"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:weightSum="1">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/profilePic"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp" />
-
+                        android:gravity="center_vertical">
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="5dp"
-                            android:weightSum="1">
-
-                            <TextView
-                                android:id="@+id/name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="top"
-                                android:layout_weight="1"
-                                android:fontFamily="sans-serif-light"
-                                android:text="Name"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/date"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:text="date"
-                                android:textSize="12sp" />
+                            android:id="@+id/back"
+                            android:padding="5dp"
+                            android:layout_width="?actionBarSize"
+                            android:layout_height="?actionBarSize"
+                            android:gravity="center"
+                            android:clickable="true"
+                            android:background="?android:selectableItemBackground">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_gravity="center"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/go_back_icon"/>
                         </LinearLayout>
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:minHeight="150dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="?actionBarSize"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/profilePic"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="2dp"
+                                android:paddingBottom="5dp"
+                                android:weightSum="1">
+
+                                <TextView
+                                    android:id="@+id/name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top"
+                                    android:layout_weight="1"
+                                    android:fontFamily="sans-serif-light"
+                                    android:text="Name"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/date"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:text="date"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorAccent" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp">
+
+                            <TextView
+                                android:id="@+id/message"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="100dp"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/colorAccent" />
-
-                    <LinearLayout
+                        android:background="@color/button"/>
+                    <TextView
+                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingTop="10dp">
-
-                        <TextView
-                            android:id="@+id/message"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Class comments"
+                        android:id="@+id/ClassComment"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <androidx.recyclerview.widget.RecyclerView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="100dp"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/button"/>
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="Class comments"
-                    android:id="@+id/ClassComment"/>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp">
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/recyclerView"/>
-                </RelativeLayout>
-                <LinearLayout
-                    android:paddingLeft="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:gravity="bottom">
-                    <EditText
-                        android:id="@+id/userComment"
-                        android:maxHeight="150dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="Add class comment"/>
+                            android:id="@+id/recyclerView"/>
+                    </RelativeLayout>
                     <LinearLayout
-                        android:id="@+id/sendComment"
-                        android:layout_width="52dp"
-                        android:layout_height="match_parent"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:background="?android:selectableItemBackground">
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@drawable/send_black"/>
+                        android:paddingLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+                        <EditText
+                            android:id="@+id/userComment"
+                            android:inputType="textMultiLine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Add class comment"/>
+                        <LinearLayout
+                            android:id="@+id/sendComment"
+                            android:layout_width="52dp"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:background="?android:selectableItemBackground">
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/send_black"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

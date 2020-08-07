@@ -50,8 +50,8 @@ public class Home extends AppCompatActivity implements InflateClassLister.OnItem
     private String ClassNumber = null;
     private String userId;
     private int ClassBackground;
-    private String JSON_URL = "http://192.168.43.89/Classroom/php%20Codes/get_class.php";
-    private String COUNT_URL = "http://192.168.43.89/Classroom/php%20Codes/get_class_count.php";
+    private String JSON_URL = "http://192.168.43.90/Classroom/php%20Codes/get_class.php";
+    private String COUNT_URL = "http://192.168.43.90/Classroom/php%20Codes/get_class_count.php";
     private ArrayList<ClassDetails> details;
 
     private RequestQueue queue;

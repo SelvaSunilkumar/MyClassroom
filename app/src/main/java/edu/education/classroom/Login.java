@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
     private CircleImageView imageView;
     private Dialog dialog;
 
-    private String JSON_URL = "http://192.168.43.89/Classroom/php%20Codes/login.php";
+    private String JSON_URL = "http://192.168.43.90/Classroom/php%20Codes/login.php";
     private String actualPassword;
     private String uUsername;
     private String uPassword;

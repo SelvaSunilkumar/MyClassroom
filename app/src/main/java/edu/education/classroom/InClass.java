@@ -47,8 +47,8 @@ import edu.education.classroom.adapter.InflateAnnouncementLister;
 
 public class InClass extends AppCompatActivity implements InflateAnnouncementLister.OnItemClickListener {
 
-    private String USER_JSON_URL = "http://192.168.43.89/Classroom/php%20Codes/login.php";
-    private String ANNOUNCEMENT_JSON_URL = "http://192.168.43.89/Classroom/php%20Codes/get_announcement.php";
+    private String USER_JSON_URL = "http://192.168.43.90/Classroom/php%20Codes/login.php";
+    private String ANNOUNCEMENT_JSON_URL = "http://192.168.43.90/Classroom/php%20Codes/get_announcement.php";
 
     private Bundle bundle;
 
@@ -142,6 +142,8 @@ public class InClass extends AppCompatActivity implements InflateAnnouncementLis
         bundle.putString("profileurl",announcementDetails.getProfilePic());
         bundle.putString("message",announcementDetails.getMessage());
         bundle.putString("announcementId",announcementDetails.getAnnouncementId());
+        bundle.putString("userProfile",userProfileImage);
+        bundle.putString("userId",userId);
         intent.putExtras(bundle);
         startActivity(intent);
     }

@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
@@ -42,8 +43,9 @@ import edu.education.classroom.adapter.InflateCommentLister;
 
 public class ViewAnnouncement extends AppCompatActivity {
 
-    private final String GET_COMMENT_URL = "http://192.168.43.89/Classroom/php%20Codes/get_comment.php";
-    private final String ADD_COMMENT_URL = "http://192.168.43.89/Classroom/php%20Codes/add_comment.php";
+    private final String GET_USER_NAME_URL = "http://192.168.43.90/Classroom/php%20Codes/get_user_name.php";
+    private final String GET_COMMENT_URL = "http://192.168.43.90/Classroom/php%20Codes/get_comment.php";
+    private final String ADD_COMMENT_URL = "http://192.168.43.90/Classroom/php%20Codes/add_comment.php";
 
     private Bundle bundle;
 
@@ -53,6 +55,9 @@ public class ViewAnnouncement extends AppCompatActivity {
     private String message;
     private String announcementId;
     private String commentDate;
+    private String profilePic;
+    private String userId;
+    private String name;
 
     private TextView announcerName;
     private TextView classComment;
@@ -67,6 +72,11 @@ public class ViewAnnouncement extends AppCompatActivity {
     private RequestQueue addCommentQueue;
     private StringRequest addCommentRequest;
     private JSONObject addCommentObject;
+
+    private RequestQueue nameQueue;
+    private StringRequest nameRequest;
+    private JSONArray nameArray;
+    private JSONObject nameObject;
 
     private RequestQueue getCommentQueue;
     private StringRequest getCommentRequest;
@@ -90,6 +100,8 @@ public class ViewAnnouncement extends AppCompatActivity {
         userProfile = bundle.getString("profileurl");
         message = bundle.getString("message");
         announcementId = bundle.getString("announcementId");
+        profilePic = bundle.getString("userProfile");
+        userId = bundle.getString("userId");
 
         classComment = findViewById(R.id.ClassComment);
         announcerName = findViewById(R.id.name);
@@ -111,6 +123,8 @@ public class ViewAnnouncement extends AppCompatActivity {
                 ViewAnnouncement.super.onBackPressed();
             }
         });
+        
+        name = getCurrentUserName(userId);
 
         userComment.addTextChangedListener(new TextWatcher() {
             @Override
@@ -145,6 +159,44 @@ public class ViewAnnouncement extends AppCompatActivity {
         adapter = new InflateCommentLister(ViewAnnouncement.this,details);
         recyclerView.setAdapter(adapter);
         fetchComment(announcementId);
+    }
+
+    private String getCurrentUserName(final String userId) {
+
+        nameQueue = Volley.newRequestQueue(ViewAnnouncement.this);
+        nameRequest = new StringRequest(Request.Method.POST, GET_USER_NAME_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            nameArray = object.getJSONArray("user");
+                            nameObject = nameArray.getJSONObject(0);
+                            name = nameObject.getString("name");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params =  new HashMap<>();
+                params.put("userId",userId);
+                return params;
+            }
+        };
+
+        nameQueue.add(nameRequest);
+
+        Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
+
+        return name;
     }
 
     private void fetchComment(final String announcementId) {
@@ -211,7 +263,7 @@ public class ViewAnnouncement extends AppCompatActivity {
                             if (addCommentObject.getString("status").equals("success"))
                             {
                                 Toast.makeText(getApplicationContext(),"Comment Added Successfully",Toast.LENGTH_SHORT).show();
-                                details.add(new CommentDetails(commentMessage,userName,userProfile,commentDate));
+                                details.add(new CommentDetails(commentMessage,name,profilePic,commentDate));
                                 adapter.notifyDataSetChanged();
                                 userComment.setText("");
                             }
@@ -237,8 +289,8 @@ public class ViewAnnouncement extends AppCompatActivity {
 
                 params.put("announcementId",announcementId);
                 params.put("message",commentMessage);
-                params.put("userName",userName);
-                params.put("userProfile",userProfile);
+                params.put("userName",name);
+                params.put("userProfile",profilePic);
                 params.put("date",commentDate);
                 return params;
             }

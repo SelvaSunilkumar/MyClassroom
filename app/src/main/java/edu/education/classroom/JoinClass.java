@@ -35,8 +35,8 @@ import java.util.Random;
 
 public class JoinClass extends AppCompatActivity {
 
-    private String CLASS_AVAILABLE_URL = "http://192.168.43.89/Classroom/php%20Codes/check_class.php";
-    private String CLASS_JOIN_URL = "http://192.168.43.89/Classroom/php%20Codes/join_class.php";
+    private String CLASS_AVAILABLE_URL = "http://192.168.43.90/Classroom/php%20Codes/check_class.php";
+    private String CLASS_JOIN_URL = "http://192.168.43.90/Classroom/php%20Codes/join_class.php";
 
     private LinearLayout closeWindow;
     private Button joinClass;
