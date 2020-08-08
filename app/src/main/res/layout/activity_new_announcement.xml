@@ -7,50 +7,57 @@
     tools:context=".NewAnnouncement"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:background="@color/color1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
+        android:layout_height="?actionBarSize"
+        android:orientation="horizontal"
+        android:background="@color/blueBackground"
+        android:weightSum="1">
         <LinearLayout
-            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
             <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:id="@+id/closeAnnouncement"
-                    android:gravity="center"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
-                    android:background="?android:selectableItemBackground"
-                    android:clickable="true"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/close_icon"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:clickable="true"
-                android:id="@+id/postAnnouncement"
-                android:background="?android:selectableItemBackground"
+                android:id="@+id/closeAnnouncement"
                 android:gravity="center"
                 android:layout_width="52dp"
-                android:layout_height="52dp">
+                android:layout_height="52dp"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:orientation="horizontal">
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/send_icon"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/close_icon"/>
             </LinearLayout>
         </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
+        <LinearLayout
+            android:layout_width="52dp"
+            android:layout_height="match_parent"
+            android:id="@+id/addAttachment"
+            android:gravity="center"
+            android:background="?selectableItemBackground"
+            android:clickable="true">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/attachment_white"/>
+        </LinearLayout>
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/postAnnouncement"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:layout_width="52dp"
+            android:layout_height="52dp">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/send_icon"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:padding="15dp"
@@ -73,6 +80,15 @@
                 android:minHeight="50dp"
                 android:id="@+id/getAnnouncement"/>
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tempImageView"/>
+        <VideoView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/tempVideoView"/>
     </LinearLayout>
 
 </LinearLayout>

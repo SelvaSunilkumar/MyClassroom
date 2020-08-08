@@ -40,7 +40,7 @@ public class CreateClass extends AppCompatActivity {
     private EditText classSubject;
     private Button createClass;
 
-    private String JSON_URL = "http://192.168.43.89/Classroom/php%20Codes/create_class.php";
+    private String JSON_URL = "http://192.168.43.90/Classroom/php%20Codes/create_class.php";
     private String Name;
     private String Room;
     private String Section;

@@ -44,7 +44,7 @@ public class Register extends AppCompatActivity {
     private CircleImageView imageView;
     private Bitmap bitmap;
 
-    private String UPLOAD_URl = "http://192.168.43.89/Classroom/php%20Codes/register.php";
+    private String UPLOAD_URl = "http://192.168.43.90/Classroom/php%20Codes/register.php";
     private String username;
     private String password;
     private String confirmPassword;

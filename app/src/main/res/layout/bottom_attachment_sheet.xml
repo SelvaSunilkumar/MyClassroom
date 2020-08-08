@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Attach"
+        android:textSize="16sp"
+        android:paddingBottom="15dp"/>
+
+    <LinearLayout
+        android:id="@+id/attachLink"
+        android:clickable="true"
+        android:paddingLeft="10dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/attachment_black"/>
+        <TextView
+            android:paddingLeft="20dp"
+            android:textColor="@color/textOriginal"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Link"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/attachFile"
+        android:clickable="true"
+        android:paddingLeft="10dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/file_upload_black"/>
+        <TextView
+            android:paddingLeft="20dp"
+            android:textColor="@color/textOriginal"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="File"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/button"/>
+
+    <LinearLayout
+        android:id="@+id/camera"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:paddingLeft="10dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/camera_black"/>
+        <TextView
+            android:paddingLeft="20dp"
+            android:textColor="@color/textOriginal"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Take photo"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/video"
+        android:clickable="true"
+        android:paddingLeft="10dp"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/video_camera_black"/>
+        <TextView
+            android:paddingLeft="20dp"
+            android:textColor="@color/textOriginal"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Record Video"/>
+    </LinearLayout>
+
+
+</LinearLayout>

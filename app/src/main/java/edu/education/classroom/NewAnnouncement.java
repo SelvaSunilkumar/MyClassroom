@@ -3,14 +3,18 @@ package edu.education.classroom;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -20,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,13 +37,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class NewAnnouncement extends AppCompatActivity {
+import edu.education.classroom.customLayout.BottomAttachmentSheet;
 
-    private String ANNOUNCEMENT_URL = "http://192.168.43.89/Classroom/php%20Codes/create_announcement.php";
+public class NewAnnouncement extends AppCompatActivity implements BottomAttachmentSheet.BottomAttachmentListener {
+
+    private String ANNOUNCEMENT_URL = "http://192.168.43.90/Classroom/php%20Codes/create_announcement.php";
 
     private LinearLayout closeActivity;
+    private LinearLayout addAttachment;
     private LinearLayout AddAnnouncement;
     private EditText getAnnouncement;
+    private ImageView imageView;
+    private VideoView videoView;
     private boolean flag = false;
 
     private String announcement;
@@ -63,8 +73,11 @@ public class NewAnnouncement extends AppCompatActivity {
         classId = bundle.getString("classId");
 
         closeActivity = findViewById(R.id.closeAnnouncement);
+        addAttachment = findViewById(R.id.addAttachment);
         AddAnnouncement = findViewById(R.id.postAnnouncement);
         getAnnouncement = findViewById(R.id.getAnnouncement);
+        imageView = findViewById(R.id.tempImageView);
+        videoView = findViewById(R.id.tempVideoView);
 
         AddAnnouncement.setClickable(false);
 
@@ -72,6 +85,14 @@ public class NewAnnouncement extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 NewAnnouncement.super.onBackPressed();
+            }
+        });
+
+        addAttachment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomAttachmentSheet attachmentSheet = new BottomAttachmentSheet();
+                attachmentSheet.show(getSupportFragmentManager(),"bottom Sheet");
             }
         });
 
@@ -164,5 +185,23 @@ public class NewAnnouncement extends AppCompatActivity {
     private String generateAnnouncementID() {
         uuid = UUID.randomUUID();
         return uuid.toString();
+    }
+
+    @Override
+    public void onCameraAttachment(Bitmap imageMap,int accessCode) {
+        imageView.setImageBitmap(imageMap);
+    }
+
+    @Override
+    public void onVideoAttachment(Uri videoUrl, int video_camera_access_request_code) {
+        videoView.setVideoURI(videoUrl);
+        videoView.start();
+    }
+
+    @Override
+    public void onFileAttachment(String filePath, String fileExtension, int file_upload_access_request_code) {
+        Toast.makeText(getApplicationContext(),filePath,Toast.LENGTH_SHORT).show();
+        videoView.setVideoURI(Uri.parse(filePath));
+        videoView.start();
     }
 }
